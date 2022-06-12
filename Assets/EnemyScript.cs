@@ -12,6 +12,7 @@ public class EnemyScript : MonoBehaviour
         {
             GetComponent<MeshRenderer>().material = deathMaterial;
             GetComponent<Rigidbody>().AddForceAtPosition(ray.direction * force, hitInfo.transform.position, ForceMode.VelocityChange);
+            gameObject.layer = 7;
             isDead = true;
         }
     }
