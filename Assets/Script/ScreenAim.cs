@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScreenAim : MonoBehaviour
 {
-    public Material deathMaterial;
+
     public float force;
     GameObject enemy;
 
@@ -31,13 +31,16 @@ public class ScreenAim : MonoBehaviour
             Debug.Log(Input.mousePosition);
             if (Physics.Raycast(ray, out hitInfo))
             {
-                enemy = hitInfo.collider.gameObject;
+                if (hitInfo.collider.gameObject.tag == "Enemy")
+                {
+                    enemy = hitInfo.collider.gameObject;
+                }
+              
             }
 
-            if (enemy != null && enemy.tag == "Enemy")
+            if (enemy != null)
             {
-                enemy.GetComponent<MeshRenderer>().material = deathMaterial;
-                enemy.GetComponent<Rigidbody>().AddForceAtPosition(ray.direction * force, hitInfo.transform.position, ForceMode.VelocityChange);
+                enemy.GetComponent<EnemyScript>().HitFromTaser(ray, force, hitInfo);
                 enemy = null;
             }
 
