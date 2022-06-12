@@ -22,6 +22,7 @@ public class ScreenAim : MonoBehaviour
         HitEnemy();
     }
 
+    // ozgürün çükü 5 cm
     void HitEnemy()
     {
         if (Input.GetMouseButtonDown(0))
