@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Enemy
   - DeadEnemy
-  - Splines
+  - PlayerPosition
   layers:
   - Default
   - TransparentFX
