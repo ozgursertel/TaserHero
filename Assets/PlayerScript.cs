@@ -6,10 +6,12 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public float radius;
+    SplineFollower splineFollower;
     // Start is called before the first frame update
     void Start()
     {
-        
+        splineFollower = GetComponent<SplineFollower>();
+
     }
 
     // Update is called once per frame
@@ -17,8 +19,20 @@ public class PlayerScript : MonoBehaviour
     {
         if(!Physics.CheckSphere(transform.position, radius, 1 << 6))
         {
-            GetComponent<SplineFollower>().enabled = true;
+            if(splineFollower != null)
+            {
+               splineFollower.enabled = true;
+
+            }
         }
+    }
+
+   void MovingEnd()
+    {
+        Debug.Log("Move Ended");
+        splineFollower.enabled = false;
+        splineFollower.spline = GameObject.Find("Spline 1").GetComponent<SplineComputer>();
+        splineFollower.Restart();
     }
 
 }

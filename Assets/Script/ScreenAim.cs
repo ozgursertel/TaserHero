@@ -28,7 +28,6 @@ public class ScreenAim : MonoBehaviour
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
-            Debug.Log(Input.mousePosition);
             if (Physics.Raycast(ray, out hitInfo))
             {
                 if (hitInfo.collider.gameObject.tag == "Enemy")
