@@ -39,7 +39,7 @@ public class ScreenAim : MonoBehaviour
 
             if (enemy != null)
             {
-                enemy.GetComponent<EnemyScript>().HitFromTaser(ray, force, hitInfo);
+                enemy.transform.parent.GetComponent<EnemyScript>().HitFromTaser(ray, force, hitInfo);
                 enemy = null;
             }
 
