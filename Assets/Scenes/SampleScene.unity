@@ -158,7 +158,6 @@ Transform:
   - {fileID: 875425840}
   - {fileID: 1466468210}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &36846420 stripped
@@ -488,10 +487,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
-=======
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
->>>>>>> bdb5b52466bd16e3e2c93492277f8e59a4b6ec54
 --- !u!1 &125103242
 GameObject:
   m_ObjectHideFlags: 0
@@ -6036,11 +6031,7 @@ Transform:
   - {fileID: 125103243}
   - {fileID: 1720475061}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
   m_RootOrder: 8
-=======
-  m_RootOrder: 10
->>>>>>> bdb5b52466bd16e3e2c93492277f8e59a4b6ec54
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1017816998 stripped
 GameObject:
@@ -8299,7 +8290,6 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1382125137}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -8412,17 +8402,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
-=======
-  m_GameObject: {fileID: 1372720440}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -33.91, y: 12.06, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> bdb5b52466bd16e3e2c93492277f8e59a4b6ec54
 --- !u!1 &1466468209
 GameObject:
   m_ObjectHideFlags: 0
@@ -9209,24 +9188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionChangeTime: 2
   radius: 15
-<<<<<<< HEAD
 --- !u!1 &1573910432 stripped
-=======
---- !u!114 &1562106217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1562106210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f9d0ddca22c7594e981b4bbb65e4c13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: 10
---- !u!1 &1635879576
->>>>>>> bdb5b52466bd16e3e2c93492277f8e59a4b6ec54
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3086436065929644917, guid: f783744631a430647ba9901f1d354a75,
     type: 3}
@@ -9776,7 +9738,6 @@ CapsuleCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1667273788}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -9883,17 +9844,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
-=======
-  m_GameObject: {fileID: 1635879576}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20, y: 24, z: 40}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> bdb5b52466bd16e3e2c93492277f8e59a4b6ec54
 --- !u!1 &1720475060
 GameObject:
   m_ObjectHideFlags: 0
