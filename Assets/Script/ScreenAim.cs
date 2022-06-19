@@ -22,7 +22,7 @@ public class ScreenAim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        HitEnemy();
         Vector3 v3;
         if(Input.touchCount != 1)
         {
