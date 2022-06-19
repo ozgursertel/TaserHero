@@ -13,6 +13,7 @@ public class PlayerScript : MonoBehaviour
 
     public float positionChangeTime;
     public float radius;
+    public float hitDamage;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!Physics.CheckSphere(transform.position, radius, 1 << 6) && checkEnemy)
+        if(!Physics.CheckSphere(transform.position, radius, 1 << 6) && checkEnemy && !GetComponent<ScreenAim>().dragging)
         {
             checkEnemy = false;
             positionCounter++;

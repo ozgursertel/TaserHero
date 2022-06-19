@@ -7,17 +7,10 @@ public class ScreenAim : MonoBehaviour
 
     public float force;
     GameObject enemy;
-    private bool dragging;
+    public bool dragging;
     private float dist;
     private Vector3 offset;
     private Transform toDrag;
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -43,8 +36,8 @@ public class ScreenAim : MonoBehaviour
                 if (hit.collider.gameObject.tag == "Enemy")
                 {
                     enemy = hit.collider.gameObject;
-                    enemy.GetComponent<EnemyScript>().HitFromTaser(ray, force, hit);
-                    toDrag = hit.transform;
+                    enemy.transform.parent.GetComponent<EnemyScript>().HitFromTaser(ray, force, hit);
+                    toDrag = hit.transform.parent.GetChild(1).GetComponent<Rigidbody>().transform;
                     dist = hit.transform.position.z - Camera.main.transform.position.z;
                     v3 = new Vector3(pos.x, pos.y, dist);
                     v3 = Camera.main.ScreenToWorldPoint(v3);
@@ -65,8 +58,8 @@ public class ScreenAim : MonoBehaviour
         if(dragging && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
         {
             dragging = false;
-           
-
+            StartCoroutine(enemy.transform.parent.GetComponent<EnemyScript>().GetUpEnemy());
+            //enemy.transform.parent.position = toDrag.position;
         }
     }
 
