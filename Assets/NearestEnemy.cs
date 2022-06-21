@@ -7,7 +7,7 @@ public class NearestEnemy : MonoBehaviour
     private GameObject[] multipleEnemies;
     public Transform closestEnemy;
     public bool enemyContact;
-    public Material detectedMaterial;
+    //public Material detectedMaterial;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class NearestEnemy : MonoBehaviour
     void Update()
     {
         closestEnemy = getClosestEnemy();
-        closestEnemy.gameObject.GetComponent<MeshRenderer>().material = detectedMaterial;
+        //closestEnemy.gameObject.GetComponent<MeshRenderer>().material = detectedMaterial;
     }
 
     public Transform getClosestEnemy()

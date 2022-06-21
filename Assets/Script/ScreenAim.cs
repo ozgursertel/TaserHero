@@ -6,7 +6,7 @@ public class ScreenAim : MonoBehaviour
 {
 
     public float force;
-    GameObject enemy;
+    public GameObject enemy;
     public bool dragging;
     private float dist;
     private Vector3 offset;

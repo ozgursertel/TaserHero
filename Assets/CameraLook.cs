@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraLook : MonoBehaviour
 {
     public GameObject player;
-    
+    public float minimumX, maximumX, minimumY, maximumY;
     Vector3 followPosition;
     private Transform targetTrans;
     // Start is called before the first frame update
@@ -17,11 +17,29 @@ public class CameraLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        targetTrans = player.GetComponent<NearestEnemy>().getClosestEnemy();
+        if (player.GetComponent<ScreenAim>().dragging)
+        {
+            if(player.GetComponent<ScreenAim>().enemy != null)
+            {
+                targetTrans = player.GetComponent<ScreenAim>().enemy.transform.parent.GetChild(1).transform;
+            }
+            
+        }
+        else
+        {
+            targetTrans = player.GetComponent<NearestEnemy>().getClosestEnemy();
+        }
 
-        followPosition = new Vector3(targetTrans.position.x, targetTrans.position.y, targetTrans.position.z);
+        
         //transform.LookAt(enemyTarget.transform);
 
-        transform.LookAt(followPosition);
+        transform.LookAt(targetTrans.position);
+        float ry = transform.eulerAngles.y;
+        if (ry >= 180) ry -= 360;
+        transform.eulerAngles = new Vector3(
+            Mathf.Clamp(transform.eulerAngles.x, minimumX, maximumX),
+            Mathf.Clamp(ry, minimumY, maximumY),
+            0
+        );
     }
 }

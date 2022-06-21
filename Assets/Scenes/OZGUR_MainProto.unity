@@ -5270,6 +5270,8 @@ GameObject:
   - component: {fileID: 1562106214}
   - component: {fileID: 1562106216}
   - component: {fileID: 1562106217}
+  - component: {fileID: 1562106218}
+  - component: {fileID: 1562106219}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5284,7 +5286,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562106210}
-  m_LocalRotation: {x: 0, y: 0.0008579809, z: 0, w: -0.99999964}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5320,7 +5322,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 10
+  enemy: {fileID: 0}
   dragging: 0
+--- !u!114 &1562106218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562106210}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bc4ea08d6fb5f6419f8b7cfb50351ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  minimumX: -40
+  maximumX: 30
+  minimumY: -40
+  maximumY: 30
+--- !u!114 &1562106219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562106210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9447f7b7bf53bc146b66b6dd76ed3d10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closestEnemy: {fileID: 0}
+  enemyContact: 0
+  detectedMaterial: {fileID: 0}
 --- !u!1 &1575776437
 GameObject:
   m_ObjectHideFlags: 0
