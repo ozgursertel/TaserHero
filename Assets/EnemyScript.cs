@@ -6,13 +6,10 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     [SerializeField]
-    private Material deathMaterial;
-    [SerializeField]
     private Rigidbody spineRb;
     [SerializeField]
     private Animator animator;
-    [SerializeField]
-    private SkinnedMeshRenderer skinnedMesh;
+    
     [SerializeField]
     private GameObject stunnedParticle;
     public float health;
@@ -45,7 +42,7 @@ public class EnemyScript : MonoBehaviour
     private void Dead()
     {
         gameObject.transform.GetChild(0).gameObject.layer = 7;
-        skinnedMesh.material = deathMaterial;
+        //skinnedMesh.material = deathMaterial;
     }
 
     public void FlagParticle(bool b)

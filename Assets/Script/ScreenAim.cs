@@ -11,6 +11,7 @@ public class ScreenAim : MonoBehaviour
     private float dist;
     private Vector3 offset;
     private Transform toDrag;
+    private Rigidbody[] ragdoll;
 
     // Update is called once per frame
     void Update()
@@ -37,7 +38,7 @@ public class ScreenAim : MonoBehaviour
                 {
                     enemy = hit.collider.gameObject;
                     enemy.transform.parent.GetComponent<EnemyScript>().HitFromTaser(ray, force, hit);
-                    toDrag = hit.transform.parent.GetChild(1).GetComponent<Rigidbody>().transform;
+                    toDrag = hit.transform.parent.GetChild(1).GetChild(0).GetComponent<Rigidbody>().transform;
                     dist = hit.transform.position.z - Camera.main.transform.position.z;
                     v3 = new Vector3(pos.x, pos.y, dist);
                     v3 = Camera.main.ScreenToWorldPoint(v3);
@@ -52,11 +53,21 @@ public class ScreenAim : MonoBehaviour
         {
             v3 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, dist);
             v3 = Camera.main.ScreenToWorldPoint(v3);
-            toDrag.position = v3 + offset;
+            ragdoll = toDrag.GetComponentsInChildren<Rigidbody>();
+            foreach(Rigidbody r in ragdoll)
+            {
+                r.drag = 1000;
+            }
+            toDrag.GetComponent<Rigidbody>().MovePosition(v3 + offset * Time.deltaTime);
+
         }
 
         if(dragging && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
         {
+            foreach (Rigidbody r in ragdoll)
+            {
+                r.drag = 0.1f;
+            }
             dragging = false;
             StartCoroutine(enemy.transform.parent.GetComponent<EnemyScript>().GetUpEnemy());
             //enemy.transform.parent.position = toDrag.position;

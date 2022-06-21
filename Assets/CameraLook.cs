@@ -21,7 +21,7 @@ public class CameraLook : MonoBehaviour
         {
             if(player.GetComponent<ScreenAim>().enemy != null)
             {
-                targetTrans = player.GetComponent<ScreenAim>().enemy.transform.parent.GetChild(1).transform;
+                targetTrans = player.GetComponent<ScreenAim>().enemy.transform.parent.GetChild(0).transform;
             }
             
         }
