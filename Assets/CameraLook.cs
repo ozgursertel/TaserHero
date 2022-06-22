@@ -8,6 +8,8 @@ public class CameraLook : MonoBehaviour
     public float minimumX, maximumX, minimumY, maximumY;
     Vector3 followPosition;
     private Transform targetTrans;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -31,9 +33,10 @@ public class CameraLook : MonoBehaviour
         }
 
         
-        //transform.LookAt(enemyTarget.transform);
+        
 
         transform.LookAt(targetTrans.position);
+        Debug.Log(transform.position);
         float ry = transform.eulerAngles.y;
         if (ry >= 180) ry -= 360;
         transform.eulerAngles = new Vector3(
