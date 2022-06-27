@@ -6,7 +6,9 @@ public class ScreenAim : MonoBehaviour
 {
 
     public float force;
+    [HideInInspector]
     public GameObject enemy;
+    [HideInInspector] 
     public bool dragging;
     private float dist;
     private Vector3 offset;
@@ -58,7 +60,7 @@ public class ScreenAim : MonoBehaviour
             {
                 r.drag = 1000;
             }
-            toDrag.GetComponent<Rigidbody>().MovePosition(v3 + offset * Time.deltaTime);
+            toDrag.GetChild(0).GetChild(0).GetComponent<Rigidbody>().MovePosition(v3 + offset * Time.deltaTime);
 
         }
 
@@ -70,7 +72,6 @@ public class ScreenAim : MonoBehaviour
             }
             dragging = false;
             StartCoroutine(enemy.transform.parent.GetComponent<EnemyScript>().GetUpEnemy());
-            //enemy.transform.parent.position = toDrag.position;
         }
     }
 

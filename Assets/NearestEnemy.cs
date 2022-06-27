@@ -25,7 +25,8 @@ public class NearestEnemy : MonoBehaviour
 
     public Transform getClosestEnemy()
     {
-        multipleEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //EnemyObject olarak tagı güncelledim 2 Enemy tagi karışmaması için
+        multipleEnemies = GameObject.FindGameObjectsWithTag("EnemyObject");
         float closestDistance = Mathf.Infinity;
         Transform trans = null;
 
@@ -35,7 +36,8 @@ public class NearestEnemy : MonoBehaviour
             if(currentDistance < closestDistance)
             {
                 closestDistance = currentDistance;
-                trans = goEnemies.transform;
+                //Burada goEnemies içerisinden spine ı bulup onu return ettim
+                trans = goEnemies.transform.GetChild(1).GetChild(0).transform;
             }
 
         }

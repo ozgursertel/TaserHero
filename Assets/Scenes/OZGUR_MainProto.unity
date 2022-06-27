@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18030395, g: 0.22573234, b: 0.30695844, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3534,7 +3534,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc4ea08d6fb5f6419f8b7cfb50351ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   minimumX: -40
   maximumX: 30
   minimumY: -40
@@ -6701,7 +6700,7 @@ GameObject:
   - component: {fileID: 8914658553320556020}
   m_Layer: 0
   m_Name: Pelferer_Stickman
-  m_TagString: Untagged
+  m_TagString: EnemyObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
