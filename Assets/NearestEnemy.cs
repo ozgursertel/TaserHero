@@ -37,7 +37,7 @@ public class NearestEnemy : MonoBehaviour
             {
                 closestDistance = currentDistance;
                 //Burada goEnemies içerisinden spine ı bulup onu return ettim
-                trans = goEnemies.transform.GetChild(1).GetChild(0).transform;
+                trans = goEnemies.transform;
             }
 
         }
