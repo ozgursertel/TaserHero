@@ -12,8 +12,9 @@ public class ScreenAim : MonoBehaviour
     public bool dragging;
     private float dist;
     private Vector3 offset;
-    private Transform toDrag;
+    private Transform toDragRigidbodyTransform;
     private Rigidbody[] ragdoll;
+    Transform toDrag;
 
     // Update is called once per frame
     void Update()
@@ -40,11 +41,12 @@ public class ScreenAim : MonoBehaviour
                 {
                     enemy = hit.collider.gameObject;
                     enemy.transform.parent.GetComponent<EnemyScript>().HitFromTaser(ray, force, hit);
-                    toDrag = hit.transform.parent.GetChild(1).GetChild(0).GetComponent<Rigidbody>().transform;
+                    toDragRigidbodyTransform = hit.transform.parent.GetChild(1).GetChild(0).GetComponent<Rigidbody>().transform;
+                    toDrag = hit.transform.parent.GetChild(1);
                     dist = hit.transform.position.z - Camera.main.transform.position.z;
                     v3 = new Vector3(pos.x, pos.y, dist);
                     v3 = Camera.main.ScreenToWorldPoint(v3);
-                    offset = toDrag.position - v3;
+                    offset = toDragRigidbodyTransform.position - v3;
                     dragging = true;
 
                 }
@@ -60,12 +62,13 @@ public class ScreenAim : MonoBehaviour
             {
                 r.drag = 1000;
             }
-            toDrag.GetChild(0).GetChild(0).GetComponent<Rigidbody>().MovePosition(v3 + offset * Time.deltaTime);
+            toDragRigidbodyTransform.GetChild(0).GetChild(0).GetComponent<Rigidbody>().MovePosition(v3 + offset * Time.deltaTime);
 
         }
 
         if(dragging && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
         {
+            Debug.Log(ragdoll);
             foreach (Rigidbody r in ragdoll)
             {
                 r.drag = 0.1f;

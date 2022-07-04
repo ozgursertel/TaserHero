@@ -29,6 +29,7 @@ public class EnemyScript : MonoBehaviour
             animator.enabled = false;
             spineRb.AddForceAtPosition(ray.direction * force, hitInfo.transform.position, ForceMode.VelocityChange);
             health = health - GameObject.Find("Player").GetComponent<PlayerScript>().hitDamage;
+            //transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
             FlagParticle(true);
             isHitted = true;
             if(health <= 0)
@@ -42,6 +43,7 @@ public class EnemyScript : MonoBehaviour
     private void Dead()
     {
         gameObject.transform.GetChild(0).gameObject.layer = 7;
+        this.gameObject.tag = "Dead Enemy";
         //skinnedMesh.material = deathMaterial;
     }
 
@@ -63,6 +65,7 @@ public class EnemyScript : MonoBehaviour
         {
             isHitted = false;
             yield return new WaitForSeconds(getUpTimer);
+            //transform.GetChild(0).GetComponent<BoxCollider>().enabled = true;
             this.transform.position = new Vector3(spineRb.transform.position.x, spineRb.transform.position.y-0.3f, spineRb.transform.position.z);
             FlagParticle(false);
             animator.enabled = true;
