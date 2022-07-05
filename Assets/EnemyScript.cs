@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -9,7 +10,6 @@ public class EnemyScript : MonoBehaviour
     private Rigidbody spineRb;
     [SerializeField]
     private Animator animator;
-    
     [SerializeField]
     private GameObject stunnedParticle;
     public float health;
@@ -17,6 +17,9 @@ public class EnemyScript : MonoBehaviour
     public bool isHitted = false;
     [SerializeField]
     private float getUpTimer;
+    [SerializeField]
+    private NavMeshAgent navMeshAgent;
+    public float radius;
     private void Start()
     {
         FlagParticle(false);
@@ -69,6 +72,19 @@ public class EnemyScript : MonoBehaviour
             this.transform.position = new Vector3(spineRb.transform.position.x, spineRb.transform.position.y-0.3f, spineRb.transform.position.z);
             FlagParticle(false);
             animator.enabled = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (Physics.CheckSphere(transform.position, radius, 1 << 8) && !isHitted && !isDead)
+        {
+            Debug.Log("Player Found");
+            navMeshAgent.SetDestination(GameObject.Find("Player").transform.position);
+        }
+        else
+        {
+            navMeshAgent.SetDestination(this.transform.position);
         }
     }
 }
