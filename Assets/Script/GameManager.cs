@@ -4,42 +4,69 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Material deathMaterial;
-    public float force;
-    Rigidbody rig;
+    public bool isGameStarted;
+    public bool isGameEnded;
 
-    
+    private int _levelIndex;
 
-    // Start is called before the first frame update
-    void Start()
+    public static GameManager Instance;
+    private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        HitEnemy();
-    }
-
-    void HitEnemy()
-    {
-        if (Input.GetMouseButtonDown(0))
+        if (Instance != null)
         {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitInfo;
-            Debug.Log(Input.mousePosition);
-            if (Physics.Raycast(ray, out hitInfo))
-            {
-                rig = hitInfo.collider.GetComponent<Rigidbody>();
-            }
-
-            if (rig != null)
-            {
-                rig.GetComponent<MeshRenderer>().material = deathMaterial;
-                rig.AddForceAtPosition(ray.direction * force, hitInfo.transform.position, ForceMode.VelocityChange);
-            }
-
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
         }
     }
+
+    private void Start()
+    {
+        _levelIndex = PlayerPrefs.GetInt("LevelIndex", 1);
+        isGameEnded = false;
+        MenuController.Instance.OpenScreen("StartScreen");
+        MenuController.Instance.StartScreenInitilaze(_levelIndex);
+    }
+
+    public void StartGame()
+    {
+        isGameStarted = true;
+        MenuController.Instance.InGameScreenInitilaze(_levelIndex);
+        MenuController.Instance.OpenScreen("InGameScreen");
+
+    }
+
+    public void LevelComplated()
+    {
+        isGameEnded = true;
+        MenuController.Instance.PlayerWinScreenInitilaze(_levelIndex);
+        MenuController.Instance.OpenScreen("LevelComplated");
+    }
+
+    public void LevelFailed()
+    {
+        isGameEnded = true;
+        MenuController.Instance.OpenScreen("LevelFailed");
+    }
+
+    public void NextLevel()
+    {
+        PlayerPrefs.SetInt("LevelIndex", _levelIndex + 1);
+        //Add Cash To ShopManager
+        LevelController.Instance.LoadNextLevel();
+    }
+
+    public void ReloadLevel()
+    {
+        LevelController.Instance.ReloadLevel();
+    }
+
+    public void ResetGame()
+    {
+        ReloadLevel();
+    }
+
+
 }

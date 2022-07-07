@@ -28,6 +28,10 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.Instance.isGameStarted)
+        {
+            return;
+        }
         if(!Physics.CheckSphere(transform.position, radius, 1 << 6) && checkEnemy && !GetComponent<ScreenAim>().dragging)
         {
             checkEnemy = false;
@@ -38,7 +42,7 @@ public class PlayerScript : MonoBehaviour
             }
             else
             {
-                Debug.Log("Level Ended");
+                GameManager.Instance.LevelComplated();
             }
         }
 

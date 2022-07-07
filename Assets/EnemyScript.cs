@@ -77,6 +77,10 @@ public class EnemyScript : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.Instance.isGameStarted)
+        {
+            return;
+        }
         if (Physics.CheckSphere(transform.position, radius, 1 << 8) && !isHitted && !isDead)
         {
             Debug.Log("Player Found");
