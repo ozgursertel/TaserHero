@@ -19,10 +19,6 @@ public class PlayerScript : MonoBehaviour
     {
         playerPositions = FindObsWithTag("PlayerPosition");
         checkEnemy = true;
-        foreach(GameObject obj in playerPositions)
-        {
-            Debug.Log("Player Position pos" + obj.transform.position);
-        }
     }
 
     // Update is called once per frame
@@ -50,7 +46,6 @@ public class PlayerScript : MonoBehaviour
 
     IEnumerator MoveNextPosition(Vector3 playerPos)
     {
-        Debug.Log("Moving Position");
         transform.DOMove(playerPositions[positionCounter].transform.position, positionChangeTime);
         transform.DORotate(playerPositions[positionCounter].transform.rotation.eulerAngles, positionChangeTime);
         yield return new WaitForSeconds(positionChangeTime);

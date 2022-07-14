@@ -19,6 +19,10 @@ public class ScreenAim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.Instance.isGameStarted)
+        {
+            return;
+        }
         HitEnemy();
         Vector3 v3;
         if(Input.touchCount != 1)
@@ -48,6 +52,7 @@ public class ScreenAim : MonoBehaviour
                     v3 = Camera.main.ScreenToWorldPoint(v3);
                     offset = toDragRigidbodyTransform.position - v3;
                     dragging = true;
+                    ragdoll = toDrag.GetComponentsInChildren<Rigidbody>();
 
                 }
             }
@@ -57,7 +62,6 @@ public class ScreenAim : MonoBehaviour
         {
             v3 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, dist);
             v3 = Camera.main.ScreenToWorldPoint(v3);
-            ragdoll = toDrag.GetComponentsInChildren<Rigidbody>();
             foreach(Rigidbody r in ragdoll)
             {
                 r.drag = 1000;
@@ -68,11 +72,13 @@ public class ScreenAim : MonoBehaviour
 
         if(dragging && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
         {
-            Debug.Log(ragdoll);
-            foreach (Rigidbody r in ragdoll)
+            if(ragdoll != null)
             {
-                r.drag = 0.1f;
-            }
+                foreach (Rigidbody r in ragdoll)
+                {
+                    r.drag = 0.1f;
+                }
+            }        
             dragging = false;
             StartCoroutine(enemy.transform.parent.GetComponent<EnemyScript>().GetUpEnemy());
         }
