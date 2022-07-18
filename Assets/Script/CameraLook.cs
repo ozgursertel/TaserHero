@@ -20,6 +20,11 @@ public class CameraLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (GameManager.Instance.isGameEnded)
+        {
+            return;
+        }
         if (player.GetComponent<ScreenAim>().dragging)
         {
             //Burada Target Transı screen aimden çektiğimiz enemynin spinine eşitledim
@@ -30,7 +35,10 @@ public class CameraLook : MonoBehaviour
             //Buradada getCloset Enemyde dönen değeri değiştirdim
             targetTrans=GetComponent<NearestEnemy>().getClosestEnemy();
         }
-        transform.DODynamicLookAt(targetTrans.position, 0.3f);
+        if(targetTrans != null)
+        {
+            transform.DODynamicLookAt(targetTrans.position, 0.3f);
+        }
         float ry = transform.eulerAngles.y;
         if (ry >= 180) ry -= 360;
 

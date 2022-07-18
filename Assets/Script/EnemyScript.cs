@@ -20,13 +20,14 @@ public class EnemyScript : MonoBehaviour
     [SerializeField]
     private NavMeshAgent navMeshAgent;
     public float radius;
+    private bool setWalkingAnimations;
     private void Start()
     {
         FlagParticle(false);
+        setWalkingAnimations = false;
     }
     public void HitFromTaser(Ray ray,float force,RaycastHit hitInfo)
     {
-        Debug.Log("Hited");
         if (!isHitted)
         {
             animator.enabled = false;
@@ -46,7 +47,8 @@ public class EnemyScript : MonoBehaviour
     private void Dead()
     {
         gameObject.transform.GetChild(0).gameObject.layer = 7;
-        this.gameObject.tag = "Dead Enemy";
+        this.gameObject.tag = "DeadEnemy";
+        GameObject.Find("Player").SendMessage("RemoveEnemy",this.gameObject);
         //skinnedMesh.material = deathMaterial;
     }
 
@@ -81,14 +83,38 @@ public class EnemyScript : MonoBehaviour
         {
             return;
         }
+        if (GameManager.Instance.isGameEnded)
+        {
+            navMeshAgent.enabled = false;
+            return;
+        }
+        if (!setWalkingAnimations)
+        {
+            animator.SetTrigger("GameStarted");
+            setWalkingAnimations = true;
+        }
         if (Physics.CheckSphere(transform.position, radius, 1 << 8) && !isHitted && !isDead)
         {
-            Debug.Log("Player Found");
             navMeshAgent.SetDestination(GameObject.Find("Player").transform.position);
         }
         else
         {
             navMeshAgent.SetDestination(this.transform.position);
+        }
+    }
+
+ 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (GameManager.Instance.isGameEnded)
+        {
+            return;
+        }
+        if (other.gameObject.tag == "Player")
+        {
+            animator.SetTrigger("Kick");
+            Debug.Log("Kicked");
+            GameManager.Instance.LevelFailed();
         }
     }
 }

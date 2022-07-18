@@ -43,4 +43,16 @@ public class NearestEnemy : MonoBehaviour
         }
         return trans;
     }
+
+    public void RemoveEnemy(GameObject gameObject)
+    {
+        Debug.Log("Remove Enemy");
+        List<GameObject> gameObjects = new List<GameObject>();
+        gameObjects.AddRange(multipleEnemies);
+        if (gameObjects.Contains(gameObject))
+        {
+            gameObjects.Remove(gameObject);
+        }
+        multipleEnemies = gameObjects.ToArray();
+    }
 }
