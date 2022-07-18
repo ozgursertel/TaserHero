@@ -32,10 +32,17 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+
+        StartCoroutine(startGame());
+    }
+
+    private IEnumerator startGame()
+    {
+        CanvasAnimator.instance.sliderPlayStageAnimator.SetTrigger("StartGame");
+        yield return new WaitForSeconds(0.75f);
         isGameStarted = true;
         MenuController.Instance.InGameScreenInitilaze(_levelIndex);
         MenuController.Instance.OpenScreen("InGameScreen");
-
     }
 
     public void LevelComplated()

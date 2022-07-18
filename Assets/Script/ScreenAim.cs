@@ -15,6 +15,7 @@ public class ScreenAim : MonoBehaviour
     private Transform toDragRigidbodyTransform;
     private Rigidbody[] ragdoll;
     Transform toDrag;
+    public _LineRenderer line;
 
     // Update is called once per frame
     void Update()
@@ -53,6 +54,7 @@ public class ScreenAim : MonoBehaviour
                     offset = toDragRigidbodyTransform.position - v3;
                     dragging = true;
                     ragdoll = toDrag.GetComponentsInChildren<Rigidbody>();
+                    line.DrawLine(toDragRigidbodyTransform);
 
                 }
             }
@@ -67,10 +69,11 @@ public class ScreenAim : MonoBehaviour
                 r.drag = 1000;
             }
             toDragRigidbodyTransform.GetChild(0).GetChild(0).GetComponent<Rigidbody>().MovePosition(v3 + offset * Time.deltaTime);
+            line.DrawLine(toDragRigidbodyTransform);
 
         }
 
-        if(dragging && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
+        if (dragging && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
         {
             if(ragdoll != null)
             {
@@ -80,6 +83,7 @@ public class ScreenAim : MonoBehaviour
                 }
             }        
             dragging = false;
+            line.EndLine();
             StartCoroutine(enemy.transform.parent.GetComponent<EnemyScript>().GetUpEnemy());
         }
     }
