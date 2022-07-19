@@ -74,12 +74,13 @@ MonoBehaviour:
   spineRb: {fileID: 5839228781810999832}
   animator: {fileID: 7705970343356183951}
   stunnedParticle: {fileID: 8926527095145471681}
-  health: 100
+  health: 50
   isDead: 0
   isHitted: 0
-  getUpTimer: 1
+  getUpTimer: 2
   navMeshAgent: {fileID: 24311997164695544}
-  radius: 10
+  radius: 35
+  playerDeadRadius: 2.3
 --- !u!195 &24311997164695544
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -112,7 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6094682367830065517}
   - component: {fileID: 8588158904841990296}
-  - component: {fileID: 72988126564926064}
+  - component: {fileID: 6405834235728567294}
   m_Layer: 6
   m_Name: Pilferer
   m_TagString: Enemy
@@ -230,7 +231,7 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00000017881393, y: 0.3716958, z: -0.000034838915}
     m_Extent: {x: 1.1722598, y: 1.1211306, z: 0.5902574}
   m_DirtyAABB: 0
---- !u!65 &72988126564926064
+--- !u!65 &6405834235728567294
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,7 +239,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72988126564926065}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.3445196, y: 1.6380672, z: 2.4446971}

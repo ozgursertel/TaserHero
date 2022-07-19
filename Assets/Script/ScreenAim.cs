@@ -24,7 +24,7 @@ public class ScreenAim : MonoBehaviour
         {
             return;
         }
-        HitEnemy();
+        //HitEnemy();
         Vector3 v3;
         if(Input.touchCount != 1)
         {

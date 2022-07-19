@@ -6,7 +6,7 @@ using DG.Tweening;
 public class CameraLook : MonoBehaviour
 {
     private GameObject player;
-    public float minimumX, maximumX, minimumY, maximumY;
+    private float minimumX, maximumX, minimumY, maximumY;
     Vector3 followPosition;
     private Transform targetTrans;
 
@@ -15,6 +15,10 @@ public class CameraLook : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        minimumX = -40;
+        maximumX = 10;
+        minimumY = -10;
+        maximumY = 10;
     }
 
     // Update is called once per frame

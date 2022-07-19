@@ -1080,12 +1080,13 @@ MonoBehaviour:
   spineRb: {fileID: 7184394153718573558}
   animator: {fileID: 2913534130725465983}
   stunnedParticle: {fileID: 2913534129678607167}
-  health: 100
+  health: 50
   isDead: 0
   isHitted: 0
-  getUpTimer: 1
+  getUpTimer: 2
   navMeshAgent: {fileID: 2643500879192773588}
-  radius: 10
+  radius: 35
+  playerDeadRadius: 2.3
 --- !u!195 &2643500879192773588
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2502,7 +2503,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5733677351183557669}
   - component: {fileID: 867813279531267149}
-  - component: {fileID: 6244509807492634132}
+  - component: {fileID: 4856229379845727489}
   m_Layer: 6
   m_Name: Stickman
   m_TagString: Enemy
@@ -2518,7 +2519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6244509807492634133}
   m_LocalRotation: {x: -0.7071019, y: -0.002641234, z: -0.0026412257, w: 0.7071018}
-  m_LocalPosition: {x: -0.00013993308, y: 0.000000008666029, z: 0.06947556}
+  m_LocalPosition: {x: -0.00013993308, y: 0.000000008666029, z: -0.02}
   m_LocalScale: {x: 99.99999, y: 99.99999, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2633,7 +2634,7 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00016015768, y: 0.07014012, z: 0.0837774}
     m_Extent: {x: 1.1719861, y: 1.2178321, z: 0.43042138}
   m_DirtyAABB: 0
---- !u!65 &6244509807492634132
+--- !u!65 &4856229379845727489
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2641,11 +2642,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6244509807492634133}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.023504421, y: 0.008783284, z: 0.024357654}
-  m_Center: {x: 0.0000039091165, y: -0.00011758058, z: 0.009970597}
+  m_Center: {x: 0.000010594281, y: -0.0010123209, z: 0.009970604}
 --- !u!1 &6772511693275850260
 GameObject:
   m_ObjectHideFlags: 0
