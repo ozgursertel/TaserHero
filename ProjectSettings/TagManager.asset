@@ -8,6 +8,8 @@ TagManager:
   - DeadEnemy
   - PlayerPosition
   - EnemyObject
+  - Confetti
+  - DeadZone
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - Enemy
   - DeadEnemy
   - Player
-  - 
+  - DeadZone
   - 
   - 
   - 

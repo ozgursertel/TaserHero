@@ -23,6 +23,11 @@ public class EnemyScript : MonoBehaviour
     public float radius;
     public float playerDeadRadius;
     private bool setWalkingAnimations;
+    //Pelferer
+    //x = 2.34452 y = 1.638067 z = 2.444697
+
+    //Stickman
+    //x = 0.02350442 y = 0.008783284 z = 0.02287093;
     private void Start()
     {
         FlagParticle(false);
@@ -35,25 +40,28 @@ public class EnemyScript : MonoBehaviour
             animator.enabled = false;
             spineRb.AddForceAtPosition(ray.direction * force, hitInfo.transform.position, ForceMode.VelocityChange);
             health = health - GameObject.Find("Player").GetComponent<PlayerScript>().hitDamage;
-            transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
+            if(transform.GetChild(0).name == "Pilferer")
+            {
+                transform.GetChild(0).GetComponent<BoxCollider>().size = new Vector3(0.1f, 0.1f, 0.1f);
+            }
+            if(transform.GetChild(0).name == "Stickman")
+            {
+                transform.GetChild(0).GetComponent<BoxCollider>().size = new Vector3(0.001f, 0.001f, 0.001f);
+            }
             FlagParticle(true);
             isHitted = true;
             navMeshAgent.enabled = false;
-            if(health <= 0)
-            {
-                isDead = true;
-                Dead();
-            }
         }
     }
 
-    private void Dead()
+    public void Dead()
     {
         gameObject.transform.GetChild(0).gameObject.layer = 7;
         this.gameObject.tag = "DeadEnemy";
         GameObject.Find("Player").SendMessage("RemoveEnemy",this.gameObject);
         transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
         navMeshAgent.enabled = false;
+        isDead = true;
         //skinnedMesh.material = deathMaterial;
     }
 
@@ -75,7 +83,16 @@ public class EnemyScript : MonoBehaviour
         {
             isHitted = false;
             yield return new WaitForSeconds(getUpTimer);
-            transform.GetChild(0).GetComponent<MeshCollider>().enabled = true;
+            if (transform.GetChild(0).name == "Pilferer")
+            {
+                transform.GetChild(0).GetComponent<BoxCollider>().size = new Vector3(2.34452f, 1.638067f, 2.444697f);
+
+            }
+            if (transform.GetChild(0).name == "Stickman")
+            {
+                transform.GetChild(0).GetComponent<BoxCollider>().size = new Vector3(0.02350442f, 0.008783284f, 0.02287093f);
+            }
+
             this.transform.position = new Vector3(spineRb.transform.position.x, spineRb.transform.position.y-0.3f, spineRb.transform.position.z);
             FlagParticle(false);
             animator.enabled = true;
@@ -124,6 +141,16 @@ public class EnemyScript : MonoBehaviour
                 Debug.Log("Kicked");
                 GameManager.Instance.LevelFailed();
         }
+
+        if (Physics.CheckSphere(transform.position, 8, 1 << 9))
+        {
+            if (!isDead)
+            {
+                Debug.Log("Enemy Dead By Falling");
+                Dead();
+            }
+            
+        }
     }
 
  
@@ -138,6 +165,10 @@ public class EnemyScript : MonoBehaviour
             animator.SetTrigger("Kick");
             Debug.Log("Kicked");
             GameManager.Instance.LevelFailed();
+        }
+        if (other.gameObject.tag == "DeadZone")
+        {
+           
         }
     }
 }

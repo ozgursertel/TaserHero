@@ -14,6 +14,6 @@ public class GunFollowScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(nearestEnemy.getClosestEnemy());
+        //transform.LookAt(nearestEnemy.getClosestEnemy());
     }
 }

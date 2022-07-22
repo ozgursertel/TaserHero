@@ -1083,9 +1083,9 @@ MonoBehaviour:
   health: 50
   isDead: 0
   isHitted: 0
-  getUpTimer: 2
+  getUpTimer: 2.5
   navMeshAgent: {fileID: 2643500879192773588}
-  radius: 35
+  radius: 15
   playerDeadRadius: 2.3
 --- !u!195 &2643500879192773588
 NavMeshAgent:

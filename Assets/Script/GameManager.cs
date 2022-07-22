@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     private int _levelIndex;
 
+    private ParticleSystem[] confettiParticles;
+
     public static GameManager Instance;
     private void Awake()
     {
@@ -24,10 +26,16 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.SetInt("LevelIndex", 1);
         _levelIndex = PlayerPrefs.GetInt("LevelIndex", 1);
         isGameEnded = false;
         MenuController.Instance.OpenScreen("StartScreen");
         MenuController.Instance.StartScreenInitilaze(_levelIndex);
+        confettiParticles = GameObject.Find("Finish_Platform").GetComponentsInChildren<ParticleSystem>();
+        foreach(ParticleSystem particle in confettiParticles)
+        {
+            particle.Stop();
+        }
     }
 
     public void StartGame()
@@ -47,15 +55,34 @@ public class GameManager : MonoBehaviour
 
     public void LevelComplated()
     {
-        isGameEnded = true;
+        if (!isGameEnded)
+        {
+            isGameEnded = true;
+            foreach (ParticleSystem particle in confettiParticles)
+            {
+                particle.Play();
+            }
+
+            StartCoroutine(LevelComplated_IE());
+        }
+        
+    }
+
+    IEnumerator LevelComplated_IE()
+    {
+        yield return new WaitForSeconds(1f);
         MenuController.Instance.PlayerWinScreenInitilaze(_levelIndex);
         MenuController.Instance.OpenScreen("LevelComplated");
     }
 
     public void LevelFailed()
     {
-        isGameEnded = true;
-        MenuController.Instance.OpenScreen("LevelFailed");
+        if (!isGameEnded)
+        {
+            isGameEnded = true;
+            MenuController.Instance.OpenScreen("LevelFailed");
+        }
+       
     }
 
     public void NextLevel()

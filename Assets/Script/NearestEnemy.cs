@@ -4,11 +4,24 @@ using UnityEngine;
 
 public class NearestEnemy : MonoBehaviour
 {
+    public static NearestEnemy Instance;
     private GameObject[] multipleEnemies;
     public Transform closestEnemy;
     public bool enemyContact;
     //public Material detectedMaterial;
 
+
+    private void Awake()
+    {
+        if(Instance != null)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {

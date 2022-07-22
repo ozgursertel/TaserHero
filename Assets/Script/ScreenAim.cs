@@ -13,6 +13,7 @@ public class ScreenAim : MonoBehaviour
     private float dist;
     private Vector3 offset;
     private Transform toDragRigidbodyTransform;
+    EnemyScript enemyScript;
     private Rigidbody[] ragdoll;
     Transform toDrag;
     public _LineRenderer line;
@@ -24,7 +25,6 @@ public class ScreenAim : MonoBehaviour
         {
             return;
         }
-        //HitEnemy();
         Vector3 v3;
         if(Input.touchCount != 1)
         {
@@ -45,7 +45,8 @@ public class ScreenAim : MonoBehaviour
                 if (hit.collider.gameObject.tag == "Enemy")
                 {
                     enemy = hit.collider.gameObject;
-                    enemy.transform.parent.GetComponent<EnemyScript>().HitFromTaser(ray, force, hit);
+                    enemyScript = enemy.transform.parent.GetComponent<EnemyScript>();
+                    enemyScript.HitFromTaser(ray, force, hit);
                     toDragRigidbodyTransform = hit.transform.parent.GetChild(1).GetChild(0).GetComponent<Rigidbody>().transform;
                     toDrag = hit.transform.parent.GetChild(1);
                     dist = hit.transform.position.z - Camera.main.transform.position.z;
@@ -55,7 +56,6 @@ public class ScreenAim : MonoBehaviour
                     dragging = true;
                     ragdoll = toDrag.GetComponentsInChildren<Rigidbody>();
                     line.DrawLine(toDragRigidbodyTransform);
-
                 }
             }
         }
@@ -84,7 +84,15 @@ public class ScreenAim : MonoBehaviour
             }        
             dragging = false;
             line.EndLine();
-            StartCoroutine(enemy.transform.parent.GetComponent<EnemyScript>().GetUpEnemy());
+            if(enemyScript.health > 0)
+            {
+                StartCoroutine(enemyScript.GetUpEnemy());
+            }
+            else
+            {
+                enemyScript.Dead();
+            }
+           
         }
     }
 
