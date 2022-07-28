@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("LevelIndex", 1);
         _levelIndex = PlayerPrefs.GetInt("LevelIndex", 1);
         isGameEnded = false;
         MenuController.Instance.OpenScreen("StartScreen");

@@ -66,7 +66,7 @@ public class ScreenAim : MonoBehaviour
             v3 = Camera.main.ScreenToWorldPoint(v3);
             foreach(Rigidbody r in ragdoll)
             {
-                r.drag = 1000;
+                r.drag = 10;
             }
             toDragRigidbodyTransform.GetChild(0).GetChild(0).GetComponent<Rigidbody>().MovePosition(v3 + offset * Time.deltaTime);
             line.DrawLine(toDragRigidbodyTransform);
@@ -84,7 +84,10 @@ public class ScreenAim : MonoBehaviour
             }        
             dragging = false;
             line.EndLine();
-            if(enemyScript.health > 0)
+            Debug.Log("SCREEN AIM:Touch Delta -X Position" + -touch.deltaPosition.x);
+            toDragRigidbodyTransform.GetChild(0).GetChild(0).GetComponent<Rigidbody>().AddForce(new Vector3(-touch.deltaPosition.x*50,Input.mousePosition.y*10,0));
+
+            if (enemyScript.health > 0)
             {
                 StartCoroutine(enemyScript.GetUpEnemy());
             }
