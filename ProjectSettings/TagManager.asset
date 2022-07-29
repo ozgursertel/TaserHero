@@ -10,6 +10,7 @@ TagManager:
   - EnemyObject
   - Confetti
   - DeadZone
+  - Ground
   layers:
   - Default
   - TransparentFX

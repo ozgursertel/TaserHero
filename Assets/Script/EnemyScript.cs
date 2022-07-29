@@ -56,6 +56,7 @@ public class EnemyScript : MonoBehaviour
 
     public void Dead()
     {
+        animator.enabled = false;
         gameObject.transform.GetChild(0).gameObject.layer = 7;
         this.gameObject.tag = "DeadEnemy";
         GameObject.Find("Player").SendMessage("RemoveEnemy",this.gameObject);

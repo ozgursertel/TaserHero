@@ -2248,7 +2248,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 2116558758}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -7639,6 +7639,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7718050643929390592, guid: 43bf26f519b9e6d41934c618941c64d6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8913822106894790171, guid: 43bf26f519b9e6d41934c618941c64d6,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -7861,12 +7866,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43bf26f519b9e6d41934c618941c64d6, type: 3}
---- !u!4 &2116558758 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8952866371853150502, guid: 43bf26f519b9e6d41934c618941c64d6,
-    type: 3}
-  m_PrefabInstance: {fileID: 2116558757}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2118603011
 GameObject:
   m_ObjectHideFlags: 0
@@ -8462,7 +8461,11 @@ Transform:
   - {fileID: 2163455404335405055}
   - {fileID: 8620093520346813199}
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 4
+=======
+  m_RootOrder: 3
+>>>>>>> be995ce083a8444ac0770b391a1f6222c7fd4a72
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &504626116367896614
 MeshRenderer:
@@ -8982,7 +8985,11 @@ Transform:
   - {fileID: 1153929387152937239}
   - {fileID: 1153929386990448020}
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 0
+=======
+  m_RootOrder: 5
+>>>>>>> be995ce083a8444ac0770b391a1f6222c7fd4a72
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1153929385312124288
 GameObject:
@@ -9879,7 +9886,11 @@ Transform:
   - {fileID: 4053118815083191458}
   - {fileID: 3190570277884206288}
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 3
+=======
+  m_RootOrder: 2
+>>>>>>> be995ce083a8444ac0770b391a1f6222c7fd4a72
   m_LocalEulerAnglesHint: {x: 0, y: 165.688, z: 0}
 --- !u!33 &1904140924433913722
 MeshFilter:

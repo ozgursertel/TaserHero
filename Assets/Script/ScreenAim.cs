@@ -85,7 +85,7 @@ public class ScreenAim : MonoBehaviour
             dragging = false;
             line.EndLine();
             Debug.Log("SCREEN AIM:Touch Delta -X Position" + -touch.deltaPosition.x);
-            toDragRigidbodyTransform.GetChild(0).GetChild(0).GetComponent<Rigidbody>().AddForce(new Vector3(-touch.deltaPosition.x*50,Input.mousePosition.y*10,0));
+            toDragRigidbodyTransform.GetChild(0).GetChild(0).GetComponent<Rigidbody>().AddForce(new Vector3(-touch.deltaPosition.normalized.x*200,Input.mousePosition.y*10,0));
 
             if (enemyScript.health > 0)
             {
