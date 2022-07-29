@@ -20,8 +20,8 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.9764706, g: 0.8901961, b: 0.6431373, a: 1}
-  m_AmbientEquatorColor: {r: 0.5149178, g: 0.65837497, b: 0.79129815, a: 1}
+  m_AmbientSkyColor: {r: 1, g: 0.7411765, b: 0, a: 1}
+  m_AmbientEquatorColor: {r: 0.6745283, g: 0.8441403, b: 1, a: 1}
   m_AmbientGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 1
@@ -1540,7 +1540,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427711897}
-  m_LocalRotation: {x: 0.05319717, y: -2.501645e-38, z: 1.86031e-39, w: 0.99858403}
+  m_LocalRotation: {x: 0.053197168, y: -1e-45, z: 0, w: 0.99858403}
   m_LocalPosition: {x: 0, y: 3.1, z: -12.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4932,7 +4932,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321122805}
-  m_LocalRotation: {x: 0.05319717, y: -2.501645e-38, z: 1.86031e-39, w: 0.99858403}
+  m_LocalRotation: {x: 0.053197168, y: -1e-45, z: -0, w: 0.99858403}
   m_LocalPosition: {x: 0, y: 3.1, z: -12.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
