@@ -46,6 +46,7 @@ public class PlayerScript : MonoBehaviour
 
     IEnumerator MoveNextPosition(Vector3 playerPos)
     {
+        yield return new WaitForSeconds(0.5f);
         transform.DOMove(playerPositions[positionCounter].transform.position, positionChangeTime);
         transform.DORotate(playerPositions[positionCounter].transform.rotation.eulerAngles, positionChangeTime);
         yield return new WaitForSeconds(positionChangeTime);
